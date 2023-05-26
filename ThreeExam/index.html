@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module" src="/main.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andeas Webite</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.150.1/three.min.js" integrity="sha512-pHIFefLE+ZH/TmpBDxPoDyC8kBxD773LqGShSv9VSiMFLluVRKKOFO9JA+TgnQruQEKovPtZ3vEz1Hwo/F4J2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <div id="summonBox">
+      <button id="delBox" onclick="hideSBox()">Hide</button>
+      <div onclick="p()" id="proton" class="atomComp">Proton</div>
+      <div onclick="n()" id="neutron" class="atomComp">Neutron</div>
+      <div onclick="e()" id="electron" class="atomComp">Electron</div>
+      <input placeholder="Atomnumber..." id="atom" class="atomComp"></input>
+      <div onclick="a()" id="atomCreate" class="atomComp">Create</div>
+    </div>
+    <script type="module">
+      import { p, n, e, a } from "./main.js"
+      window.p = p
+      window.n = n
+      window.e = e
+      window.a = a
+    </script>
+      <script>
+        function hideSBox(){
+          var sBox = document.getElementById("summonBox")
+          var atom = document.getElementsByClassName("atomComp")
+          var dBox = document.getElementById("delBox")
+          console.log(sBox.style.height)
+          if (sBox.style.height != "0px"){
+            dBox.style.top = "180px";
+            dBox.innerHTML = "Show";
+            sBox.style.height = "0px";
+            for (let i = 0; i<atom.length; i++){
+              atom[i].style.display = "none";
+            }
+          }
+          else if (sBox.style.height == "0px"){
+            dBox.style.top="-5%";
+            dBox.innerHTML="Hide";
+            sBox.style.height = "215px";
+            for (let i = 0; i<atom.length; i++){
+              atom[i].style.display = "static";
+            }
+          }
+        }
+      </script>
+  </body>
+</html>
